@@ -79,7 +79,7 @@ int main(int argc, char *argv[])
 
         printf("\x1b[0;0H"
                "Pad: Rotate.\nA: Sine effect.\nB: Noise effect.\n"
-               "X: Deactivate effects.\nL/R: Pause/Unpause.");
+               "X: Deactivate effects.\nL/R: Pause/Unpause.\nSTART: Exit.");
 
         // Rotate model
         if (keys & KEY_UP)
@@ -106,6 +106,10 @@ int main(int argc, char *argv[])
         if (kdown & KEY_R)
             NE_SpecialEffectPause(false);
 
+        // Exit if START is pressed
+        if (kdown & KEY_START)
+            break;
+    
         // Draw 3D scenes
         NE_ProcessDualArg(Draw3DScene, Draw3DScene2, &Scene, &Scene);
     }
