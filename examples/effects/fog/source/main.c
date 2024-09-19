@@ -121,12 +121,16 @@ int main(int argc, char *argv[])
         if (keys & KEY_SELECT)
             color = NE_White;
 
+        // Quit if Y is pressed
+        if (keys & KEY_Y)
+            break;
+
         // Enable/update fog
         NE_FogEnable(shift, color, 31, mass, depth);
 
         printf("\x1b[0;0H"
                "Up/Down - Shift: %d \nX/B - Mass: %d  \n"
-               "L/R - Depth: 0x%x   \nSelect/Start - Change color.",
+               "L/R - Depth: 0x%x   \nSelect/Start - Change color.\nY: Quit",
                shift, mass, depth);
 
         // Draw scene
